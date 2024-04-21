@@ -36,10 +36,9 @@
 Эта архитектура предполагает, что система спроектирована так, чтобы быть масштабируемой и безопасной,
 обеспечивая при этом глубокий анализ данных и бизнес-интеллект для управления онлайн-курсами.
 
-Диаграмму в формате draw.io можно будет скачать [тут](Module1/LMS_OnlineCourses.drawio)
+Диаграмму в формате draw.io можно будет скачать [тут](https://github.com/almazuulu/DE-101/blob/master/Module1/LMS_OnlineCourses.drawio)
 
-![LMS_OnlineCourse](Module1/Screenshots/LMS_OnlineCourses.jpg)
-
+![LMS_OnlineCourse](https://github.com/almazuulu/DE-101/blob/master/Module1/Screenshots/LMS_OnlineCourses.jpg)
 
 ## Задание 2 - Аналитика в Excel
 
@@ -52,19 +51,19 @@
 - Ежегодный топ клиентов на каждый год, в котором показаны клиенты которые покупают чаще других каждый год
 - Показатели менеджеров по продаже и выручке, дополнительно можно будет отфильтроваться по определенному менеджеру
 
-![Dashboard 1](Module1/Screenshots/Dashboard-1.png)
+![Dashboard 1](https://github.com/almazuulu/DE-101/blob/master/Module1/Screenshots/Dashboard-1.png)
 
 ### Dashboard 2 - Dashboard Customer Analysis
 Показаны основные показатели и анализ по клиентам
 
-![Dashboard 2](Module1/Screenshots/Dashboard-2.png)
+![Dashboard 2](https://github.com/almazuulu/DE-101/blob/master/Module1/Screenshots/Dashboard-2.png)
 
 ### Dashboard 3 - Dashboard Product Analysis
 Показаны основные показатели по продуктам
 
-![Dashboard 2](Module1/Screenshots/Dashboard-3.png)
+![Dashboard 2](https://github.com/almazuulu/DE-101/blob/master/Module1/Screenshots/Dashboard-3.png)
 
-Скачать файл excel с анализом можно будет [тут](Module1/Superstore_Dashboard_Askarbek.xlsx)
+Скачать файл excel с анализом можно будет [тут](https://github.com/almazuulu/DE-101/blob/master/Module1/Superstore_Dashboard_Askarbek.xlsx)
 
 
 
