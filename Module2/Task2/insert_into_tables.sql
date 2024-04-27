@@ -64,12 +64,19 @@ FROM
 
 CREATE SEQUENCE state_id_seq;
 
-INSERT INTO state (state_id, state_name)
+INSERT INTO state (state_id, state_name, region_id)
 SELECT
-  nextval('state_id_seq'),
-  distinct_state
+  nextval('state_id_seq'),            -- Генерация нового ID для каждой уникальной строки
+  og.state,                           -- Названия штатов
+  r.region_id                         -- Соответствующий ID региона
 FROM
-  (SELECT DISTINCT state as distinct_state FROM orders_general) as distinct_state;
+  (SELECT DISTINCT state, region FROM orders_general) as og
+LEFT JOIN region r ON r.region_name = og.region  -- Соединение с таблицей region для получения region_id
+WHERE
+  NOT EXISTS (
+    -- Проверка на отсутствие такого же штата с тем же region_id в таблице state
+    SELECT 1 FROM state s WHERE s.state_name = og.state AND s.region_id = r.region_id
+  );
 
 
 -- ************************************** geography
@@ -101,12 +108,26 @@ FROM
 
 CREATE SEQUENCE sub_category_id_seq;
 
-INSERT INTO sub_category (sub_category_id, sub_category_name)
+INSERT INTO sub_category (sub_category_id, sub_category_name, category_id)
 SELECT
-  nextval('sub_category_id_seq'),
-  distinct_sub_category
-FROM
-  (SELECT DISTINCT subcategory as distinct_sub_category FROM orders_general) as distinct_sub_category;
+  nextval('sub_category_id_seq'),               -- Генерация нового ID для каждой уникальной строки
+  og.subcategory,                               -- Названия субкатегорий
+  cat.category_id                               -- Соответствующий ID категории
+FROM (
+  SELECT DISTINCT                               -- Применение DISTINCT на уровне подзапроса
+    subcategory, 
+    category 
+  FROM orders_general
+) og
+JOIN category cat ON cat.category_name = og.category  -- Соединение с таблицей category для получения category_id
+WHERE
+  NOT EXISTS (
+    -- Проверка на отсутствие такой же субкатегории с тем же category_id в таблице sub_category
+    SELECT 1 
+    FROM sub_category sc 
+    WHERE sc.sub_category_name = og.subcategory AND sc.category_id = cat.category_id
+  );
+
 
 -- ************************************** product
 INSERT INTO product (product_id, product_name)
