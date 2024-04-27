@@ -83,15 +83,16 @@ WHERE
 
 CREATE SEQUENCE geography_seq_id;
 
-INSERT INTO geography (geography_id, country, city, postal_code)
+INSERT INTO geography (geography_id, country, city, postal_code, state_id)
 SELECT
-  nextval('geography_seq_id'),
-  og.country,
-  og.city,
-  og.postal_code
+  nextval('geography_seq_id'),         -- Генерация нового ID для каждой уникальной строки
+  og.country,                          -- Страна из orders_general
+  og.city,                             -- Город из orders_general
+  og.postal_code,                      -- Почтовый индекс из orders_general
+  s.state_id                           -- Соответствующий state_id из таблицы state
 FROM
-  (SELECT DISTINCT country, city, postal_code FROM orders_general) AS og;
-
+  (SELECT DISTINCT country, city, postal_code, state FROM orders_general) AS og
+LEFT JOIN state s ON s.state_name = og.state;  -- Соединение с таблицей state для получения state_id
 
 -- ************************************** category
 
@@ -130,13 +131,20 @@ WHERE
 
 
 -- ************************************** product
-INSERT INTO product (product_id, product_name)
+INSERT INTO product (product_id, product_name, category_id)
 SELECT DISTINCT
-  product_id,
-  product_name
+  og.product_id,          -- Использование существующего product_id из orders_general
+  og.product_name,
+  cat.category_id         -- Получение category_id из таблицы category
 FROM
-  orders_general AS og;
-
+  orders_general og
+JOIN
+  category cat ON cat.category_name = og.category  -- Соединение с таблицей category для получения category_id
+WHERE
+  NOT EXISTS (
+    -- Проверка на отсутствие такого же product_id в таблице product, чтобы избежать дублирования
+    SELECT 1 FROM product p WHERE p.product_id = og.product_id
+  );
 
 -- ************************************** orders
 INSERT INTO orders (order_id, order_date)
