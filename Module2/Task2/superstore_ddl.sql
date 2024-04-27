@@ -46,7 +46,13 @@ CREATE TABLE sales
  quantity int NOT NULL,
  discount double precision NOT NULL,
  profit   double precision NOT NULL,
+ order_id character varying,
  CONSTRAINT PK_1 PRIMARY KEY ( sale_id )
+);
+
+CREATE INDEX FK_SALES_ORDER ON sales
+(
+ order_id
 );
 
 -- ************************************** region
@@ -64,7 +70,7 @@ CREATE TABLE state
 (
  state_id   int NOT NULL,
  state_name varchar(50) NOT NULL,
- region_id  int NOT NULL,
+ region_id  int,
  CONSTRAINT PK_STATE PRIMARY KEY ( state_id )
 );
 
@@ -80,9 +86,8 @@ CREATE TABLE geography
  geography_id int NOT NULL,
  country      varchar(50) NOT NULL,
  city         varchar(50) NOT NULL,
- "state"      varchar(50) NOT NULL,
- postal_code  int NOT NULL,
- state_id     int NOT NULL,
+ postal_code  int,
+ state_id     int,
  CONSTRAINT PK_GEOGRAPHY PRIMARY KEY ( geography_id )
 );
 
@@ -107,7 +112,7 @@ CREATE TABLE sub_category
 (
  sub_category_id   int NOT NULL,
  sub_category_name varchar(50) NOT NULL,
- category_id       int NOT NULL,
+ category_id       int,
  CONSTRAINT PK_SUB_CATEGORY PRIMARY KEY ( sub_category_id )
 );
 
@@ -120,12 +125,10 @@ CREATE INDEX FK_SUB_CATEGORY_CATEGORY ON sub_category
 
 CREATE TABLE product
 (
- product_id   int NOT NULL,
- product_name varchar(100) NOT NULL,
- category_id  int NOT NULL,
- CONSTRAINT PK_PRODUCT PRIMARY KEY ( product_id )
+ product_id   character varying,
+ product_name varchar(200),
+ category_id  int
 );
-
 CREATE INDEX FK_PRODUCT_CATEGORY ON product
 (
  category_id
@@ -135,11 +138,9 @@ CREATE INDEX FK_PRODUCT_CATEGORY ON product
 
 CREATE TABLE order_product
 (
- order_id   int NOT NULL,
- product_id int NOT NULL
-
+ order_id   character varying,
+ product_id character varying
 );
-
 CREATE INDEX FK_ORDER_PRODUCT_ORDER ON order_product
 (
  order_id
@@ -150,19 +151,17 @@ CREATE INDEX FK_ORDER_PRODUCT_PRODUCT ON order_product
  product_id
 );
 
-
 -- ************************************** orders
 
 
 CREATE TABLE orders
 (
- order_id     int NOT NULL,
- order_date   date NOT NULL,
- ship_mode_id int NOT NULL,
- sale_id      int NOT NULL,
- manager_id   int NOT NULL,
- return_id    int NOT NULL,
- CONSTRAINT PK_ORDERS PRIMARY KEY ( order_id )
+ order_id     character varying,
+ order_date   date,
+ ship_mode_id int,
+ manager_id   int,
+ return_id    int,
+ geography_id int,
 );
 
 CREATE INDEX FK_ORDERS_SHIP_MODE ON orders
@@ -170,9 +169,9 @@ CREATE INDEX FK_ORDERS_SHIP_MODE ON orders
  ship_mode_id
 );
 
-CREATE INDEX FK_ORDERS_SALE ON orders
+CREATE INDEX FK_ORDERS_GEOGRAPHY ON orders
 (
- sale_id
+ geography_id
 );
 
 CREATE INDEX FK_ORDERS_MANAGER ON orders
@@ -180,29 +179,20 @@ CREATE INDEX FK_ORDERS_MANAGER ON orders
  manager_id
 );
 
-CREATE INDEX FK_4 ON orders
+CREATE INDEX FK_ORDERS_RETURN ON orders
 (
  return_id
 );
-
 
 
 -- ************************************** customer
 
 CREATE TABLE customer
 (
- customer_id      int NOT NULL,
+ customer_id      character varying,
  customer_name    varchar(50) NOT NULL,
  customer_surname varchar(50) NOT NULL,
- order_id         int NOT NULL,
- geography_id     int NOT NULL,
- segment_id       int NOT NULL,
- CONSTRAINT PK_CUSTOMER PRIMARY KEY ( customer_id )
-);
-
-CREATE INDEX FK_CUSTOMER_ORDER ON customer
-(
- order_id
+ segment_id       int
 );
 
 CREATE INDEX FK_CUSTOMER_SEGMENT ON customer
@@ -210,10 +200,6 @@ CREATE INDEX FK_CUSTOMER_SEGMENT ON customer
  segment_id
 );
 
-CREATE INDEX FK_GEOGRAPHY ON customer
-(
- geography_id
-);
 
 
 

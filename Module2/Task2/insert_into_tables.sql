@@ -1,5 +1,3 @@
--- ************************************** 
-
 -- ************************************** region
 
 -- Create sequence id for region table
@@ -37,3 +35,103 @@ SELECT
   distinct_ship_mode
 FROM
   (SELECT DISTINCT ship_mode as distinct_ship_mode FROM orders_general) as distinct_ship_mode;
+
+-- ************************************** sales
+CREATE TABLE sales
+(
+ sale_id  int NOT NULL,
+ sales    double precision NOT NULL,
+ quantity int NOT NULL,
+ discount double precision NOT NULL,
+ profit   double precision NOT NULL,
+ CONSTRAINT PK_1 PRIMARY KEY ( sale_id )
+);
+
+
+CREATE SEQUENCE sale_id_seq;
+
+INSERT INTO sales (sale_id, sales, quantity, discount, profit)
+SELECT
+  nextval('sale_id_seq'),
+  og.sales,
+  og.quantity,
+  og.discount,
+  og.profit
+FROM
+  orders_general AS og;
+
+-- ************************************** state
+
+CREATE SEQUENCE state_id_seq;
+
+INSERT INTO state (state_id, state_name)
+SELECT
+  nextval('state_id_seq'),
+  distinct_state
+FROM
+  (SELECT DISTINCT state as distinct_state FROM orders_general) as distinct_state;
+
+
+-- ************************************** geography
+
+CREATE SEQUENCE geography_seq_id;
+
+INSERT INTO geography (geography_id, country, city, postal_code)
+SELECT
+  nextval('geography_seq_id'),
+  og.country,
+  og.city,
+  og.postal_code
+FROM
+  (SELECT DISTINCT country, city, postal_code FROM orders_general) AS og;
+
+
+-- ************************************** category
+
+CREATE SEQUENCE category_id_seq;
+
+INSERT INTO category (category_id, category_name)
+SELECT
+  nextval('category_id_seq'),
+  distinct_category
+FROM
+  (SELECT DISTINCT category as distinct_category FROM orders_general) as distinct_category;
+
+-- ************************************** sub-category
+
+CREATE SEQUENCE sub_category_id_seq;
+
+INSERT INTO sub_category (sub_category_id, sub_category_name)
+SELECT
+  nextval('sub_category_id_seq'),
+  distinct_sub_category
+FROM
+  (SELECT DISTINCT subcategory as distinct_sub_category FROM orders_general) as distinct_sub_category;
+
+-- ************************************** product
+INSERT INTO product (product_id, product_name)
+SELECT DISTINCT
+  product_id,
+  product_name
+FROM
+  orders_general AS og;
+
+
+-- ************************************** orders
+INSERT INTO orders (order_id, order_date)
+SELECT
+  og.order_id,
+  og.order_date
+FROM
+  orders_general AS og;
+
+
+-- ************************************** customer
+INSERT INTO customer (customer_id, customer_name, customer_surname)
+SELECT DISTINCT
+  customer_id,
+  split_part(customer_name, ' ', 1) AS first_name,
+  split_part(customer_name, ' ', 2) AS last_name
+FROM
+  orders_general
+GROUP BY customer_id, first_name, last_name;
