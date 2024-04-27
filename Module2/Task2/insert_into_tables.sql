@@ -37,16 +37,6 @@ FROM
   (SELECT DISTINCT ship_mode as distinct_ship_mode FROM orders_general) as distinct_ship_mode;
 
 -- ************************************** sales
-CREATE TABLE sales
-(
- sale_id  int NOT NULL,
- sales    double precision NOT NULL,
- quantity int NOT NULL,
- discount double precision NOT NULL,
- profit   double precision NOT NULL,
- CONSTRAINT PK_1 PRIMARY KEY ( sale_id )
-);
-
 
 CREATE SEQUENCE sale_id_seq;
 
