@@ -8,7 +8,6 @@ CREATE TABLE manager
  CONSTRAINT PK_MANAGER_ID PRIMARY KEY ( manager_id )
 );
 
-
 -- ************************************** ship_mode
 
 CREATE TABLE ship_mode
