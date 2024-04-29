@@ -63,8 +63,8 @@
 #### Выполнить свои запросы из предыдущих упражнений. По примеру из Модуля 1:
 - Запросы были выполнены используя скрипты преподавателя "Staging stg.orders.sql" и "Business Layer from_stg_to_dw.sql"
 Выполненные скрипты по примеру из Модуля 1 по основным показателям:  
-[По показателям для Staging] (https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/task2_srcipts_stg.sql);  
-[По показателям для Business Layer] (https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/task2_srcipts_dw.sql);
+[По показателям для Staging](https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/task2_srcipts_stg.sql);  
+[По показателям для Business Layer](https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/task2_srcipts_dw.sql);
 
 ## Задание 5 - Данные до бизнес-пользователя. Пример решений на KlipFolio
 - В качестве идеи взяты примеры из Модуля 1. Выполнен DashBoard на KlipFolio используя таблицы из Amazon Lightsail
