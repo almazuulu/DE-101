@@ -20,17 +20,20 @@
 #### Нарисовать концептуальную, логическую, физическую модель данных
 Все модели данных были реализованы используя бесплатную версию [SqlDBM](https://sqldbm.com/Home/)
 
-- Концептуальная модель данных: 
+- Концептуальная модель данных:
+
 ![ConceptualDataModel](https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/Screenshots/conceptual_model_superstore.png)
 Стоит отметить, что это чисто мое видение. Постарался разбить на мелкие таблицы с отношениями, и тут есть разница между 
 логическими и физическими моделями данных ввиду того, что после были небольшие изменения в логических и физических но
 обратно изменять под них времени не хватило.
 
 - Логическая модель данных:
+
 ![LogicalDataModel](https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/Screenshots/logical_model_superstore.png)
 Логическая модель повторяет физическую модель.
 
 - Физическая модель данных:
+
 ![PhysicalDataModel](https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/Screenshots/physical_model_superstore.png)
 В этой модели данных как и говорил выше я постарался разбить на детальные таблицы, чтобы соответствовать 3 форме нормализации
 Моя схема чуть расходится с той, что предложил преподаватель. Также я оставил оригинальные id-varchar не добавляя числовые 
@@ -54,6 +57,7 @@
 - Сделано.
 #### Загрузить данные из модуля 2.3 (Superstore dataset) в staging (схема БД stg) и загрузить dimensional model (схема dw):
 - Скриншоты:
+
 ![AWS_Connect1](https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/Screenshots/lightsail_db1.png)
 ![AWS_Connect2](https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/Screenshots/lightsail_db2.png)
 ![AWS_Connect3](https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/Screenshots/lightsail_db4.png)
@@ -68,10 +72,13 @@
 ## Задание 5 - Данные до бизнес-пользователя. Пример решений на KlipFolio
 - В качестве идеи взяты примеры из Модуля 1. Выполнен DashBoard на KlipFolio используя таблицы из Amazon Lightsail
 - Подключение к таблице Orders схемы Staging:
+
 ![Data Feed - Orders table](https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/Screenshots/klipfolio_orders_stg_feed.png)
 - Создана метрика по Sales из таблицы Orders:
+
 ![Sales metrics](https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/Screenshots/klipfolio_sales_metrics.png)
 - Создан Dashboard используя созданную метрику:
+
 ![Sales Dashboard](https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/Screenshots/klipfolio_sales_dashboard.png)
 
 
