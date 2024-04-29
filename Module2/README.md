@@ -56,9 +56,8 @@
 - Скриншоты:
 ![AWS_Connect1](https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/Screenshots/lightsail_db1.png)
 ![AWS_Connect2](https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/Screenshots/lightsail_db2.png)
-![AWS_Connect2](https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/Screenshots/lightsail_db3.png)
-![AWS_Connect2](https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/Screenshots/lightsail_db4.png)
-![AWS_Connect2](https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/Screenshots/lightsail_db5.png)
+![AWS_Connect3](https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/Screenshots/lightsail_db4.png)
+![AWS_Connect4](https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/Screenshots/lightsail_db5.png)
 
 #### Выполнить свои запросы из предыдущих упражнений. По примеру из Модуля 1:
 - Запросы были выполнены используя скрипты преподавателя "Staging stg.orders.sql" и "Business Layer from_stg_to_dw.sql"
