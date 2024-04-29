@@ -65,7 +65,7 @@
 
 #### Выполнить свои запросы из предыдущих упражнений. По примеру из Модуля 1:
 - Запросы были выполнены используя скрипты преподавателя "Staging stg.orders.sql" и "Business Layer from_stg_to_dw.sql"
-Выполненные скрипты по примеру из Модуля 1 по основным показателям:  
+Вам будет легче посмотреть выполненные скрипты в отдельных окошках:  
 [Для Staging - task2_srcipts_stg.sql](https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/task2_srcipts_stg.sql);  
 [Для Business Layer - task2_srcipts_dw.sql ](https://github.com/almazuulu/DE-101/blob/master/Module2/Task2/task2_srcipts_dw.sql);
 
